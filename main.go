@@ -9,10 +9,6 @@ import (
 	"github.com/gorilla/mux"
 )
 
-type Routes struct {
-	health health
-}
-
 func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
