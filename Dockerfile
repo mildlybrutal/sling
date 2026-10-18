@@ -7,7 +7,9 @@ RUN go mod download
 COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -o server main.go
 
-FROM alpine:latest
+FROM alpine:3.20
+RUN adduser -D -u 10001 app
+USER app
 WORKDIR /app
 COPY --from=builder /app/server .
 EXPOSE 3000
